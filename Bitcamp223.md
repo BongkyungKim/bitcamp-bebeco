@@ -758,3 +758,32 @@ where no > 10;  // <= selection 조건
 - eomcs-docs.sql.Exam01 완료
 - eomcs-docs.sql.Exam02 완료
 - eomcs-docs.sql.Exam03 ~ where까지
+
+# 20220831
+
+### DBMS와 파일저장
+
+- 이미지 삽입
+
+### DBMS에 파일을 저장하는 사례
+
+- 이미지 삽입
+
+### 그림 --[변환]--> 텍스트
+
+### File System ------> 파일 정보를 다루는 시스템
+
+### File System 과 UI
+
+### File System 과 접근 도구들
+
+### Foreign key
+
+### 예제 ER Diag.
+
+### 진도
+
+- eomcs-docs.sql.Exam03 and,or 연산자 ~
+- eomcs-docs.sql.Exam04 
+- eomcs-docs.sql.Exam05
+- 서브쿼리, join 찾아보기

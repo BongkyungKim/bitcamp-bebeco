@@ -220,6 +220,109 @@ create table test1(
 
 - 여러 개의 컬럼을 묶어서 PK로 사용하면 데이터를 다루기가 불편하다. 그래서 임의의 값을 저장하는 컬럼을 만들어 PK로 사용한다. `(인공 키의 예!)`
 
+- `unique`
+
+  PK는 아니지만 PK처럼 중복되어서는 안되는 컬럼을 저장할 때 사용한다.
+
+  PK를 대신해서 사용할 수 있는 key라고 해서 `대안키(alternate key)`라고 부른다.
+
+  즉 대안키는 DBMS에서 unique 컬럼으로 지정한다.
+
+<br/>
+
+### `unique` = `alternate key`(대안키)
+
+<br/>
+
+### `index`
+
+- 검색 조건으로 사용되는 컬럼인 경우 따로 정렬해 두면 데이터를 찾을 때 빨리 찾을 수 있다.
+
+- 특정 컬럼의 값을 A-Z 또는 Z-A로 정렬시키는 문법이 인덱스이다.
+
+- DBMS는 해당 컬럼의 값으로 정렬한 데이터 정보를 별도의 파일로 생성한다.
+
+- 책 맨 뒤에 색인표와 같다.
+
+- 인덱스로 지정된 컬럼의 값이 추가/변경/삭데 될 때 인덱스 정보도 갱신한다.
+
+- 따라서 변경이 자주 발생하는 테이블에 대해 인덱스 컬럼을 지정하면 인덱스 정보를 자주 갱신해야 하기 때문에 속도가 느려지는 문제가 있다.
+
+- 대신 조회 속도는 빠르다.
+
+<br/>
+
+### 컬럼 값 자동 추가
+
+- 숫자 타입이 `PK 컬럼` 또는 `unique 컬럼`인 경우 값을 1씩 자동 증가시킬 수 있다.
+
+- 즉 데이터를 입력할 때 해당 컬럼의 값을 넣지 않아도 자동으로 증가된다.
+
+- 단 삭제를 통해 중간에 비어있는 번호는 다시 채우지 않는다.
+  즉 증가된 번호는 계속 앞으로 증가할 뿐이다.
+
+```sql
+alter table test1
+  modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류*/
+```
+
+```sql
+alter table test1
+  add constraint primary key (no); /* 일단 no를 pk로 지정한다.*/
+
+alter table test1
+  add constraint unique (no); /* no를 unique로 지정해도 한다.*/
+
+alter table test1
+  modify column no int not null auto_increment; /* 그런 후 auto_increment를 지정한다.*/
+```
+
+  다른 DBMS의 경우 입력 오류가 발생하더라도 번호는 자동 증가하기 때문에 다음 값을 입력할 때는 증가된 값이 들어간다.
+
+  그러나 MySQL(MariaDB)는 증가되지 않는다.
+
+<br/>
+
+### 뷰(view)
+
+- 조회 결과를 테이블처럼 사용하는 문법
+
+- `select` 문장이 복잡할 때 뷰로 정의해 놓고 사용하면 편리하다.
+
+- view가 참조하는 테이블에 데이터를 입력한 후 view를 조회하면?
+
+  => 새로 추가된 컬럼이 함께 조회된다.
+
+- 뷰를 조회할 때 마다 매번 `select 문장`을 실행한다.
+
+  => 미리 결과를 만들어 놓는 것이 아니다.
+s
+- 일종의 조회 함수 역할을 한다.
+
+- 복잡한 조회를 가상의 테이블로 표현할 수 있어 SQL문이 간결해진다.
+
+<br/>
+
+### 뷰 삭제
+
+```sql
+drop view worker;
+```
+<br/>
+
+### 제약 조건 조회
+
+- 테이블의 제약 조건 조회
+
+```sql
+select table_name, constraint_name, constraint_type
+from table_constraints;
+```
+
+- 테이블의 키 컬럼 정보 조회
+
+```sql
+select table_name, column_name
 
 
 

@@ -84,13 +84,20 @@ TLS : 암호화
 
 # Ch.2 - 8 텍스트와 바이너리, MIME, Base64
 
-# Ch.2 - 9 관심사의 분리와 MVC 패턴
+# Ch.2 - 9 관심사의 분리와 MVC 패턴 - 이론
 
+# Ch.2 - 10 관심사의 분리와 MVC 패턴 - 실습
+
+- servlet-context.xml : 웹 관련 설정 파일
+
+# Ch.2 - 11 관심사의 분리와 MVC 패턴 - 원리(1)
 
 ---
 
-### 자바 찾아보기
+### 찾아보기
 
 - Enumeration 완료
+- 익명클래스
+- EL(Expression Language)
+- isValid()
 
-- 익명클래스 
