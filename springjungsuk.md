@@ -92,6 +92,9 @@ TLS : 암호화
 
 # Ch.2 - 11 관심사의 분리와 MVC 패턴 - 원리(1)
 
+
+
+
 ---
 
 ### 찾아보기
@@ -100,4 +103,6 @@ TLS : 암호화
 - 익명클래스
 - EL(Expression Language)
 - isValid()
+- forName()
+- replace()
 

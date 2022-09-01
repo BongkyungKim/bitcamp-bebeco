@@ -787,3 +787,77 @@ where no > 10;  // <= selection 조건
 - eomcs-docs.sql.Exam04 
 - eomcs-docs.sql.Exam05
 - 서브쿼리, join 찾아보기
+
+# 20220901
+
+### 
+
+sha2('****', 224) : 단방향 암호~
+
+### Join ----> 여러 테이블에 분산 저장된 데이터를 한 개의 데이터로 모으는 것
+
+`cross join`=`cartesian join` : 의미 없는 조인
+
+`inner join` : 일치하는 데이터가 있는 경우만 조인
+
+
+### select
+
+```sql
+select all loc from room;
+```
+
+`all` : 생략가능
+
+### select : order by
+
+```sql
+select 컬럼, 컬럼, ... // 3
+from 테이블 // 1
+order by 컬럼 asc ・ desc, 컬럼 asc ・ desc, ... // 2
+```
+
+### select : alias
+
+```sql
+select 컬럼명 as 별명, 식 as 별명
+```
+
+`as` : 생략가능
+
+`별명` : 별명이 있을 경우 컬럼을 추출할 때 별명을 사용해야 한다.
+
+### select : union 과 union all
+
+- 두 개의 질의 결과를 한 개의 결과로 합치는 것
+
+`union` : 합집합, 중복제거
+
+`union all` : 합집합, 중복제거 안 함
+
+### select : 차집합
+
+- Oracle은 MINUS 지원, MySQL은 지원 안 함
+
+- 같은 타입, 갯수도 같아야 함
+
+### select : 교집함
+
+- Oracle은 INTERSECT 지원, MySQL은 지원 안 함
+
+결과 데이터를 선택 하는 셀렉션
+
+컬럼 선택 프로젝션
+
+### group by ~ having ~
+
+
+
+### 진도
+
+- eomcs-docs.sql.Exam06
+- eomcs-docs.sql.Exam07_1
+- eomcs-docs.sql.Exam07_2
+- eomcs-docs.sql.Exam07_3
+- eomcs-docs.sql.Exam07_4
+- eomcs-docs.sql.Exam07_5 ~ 177라인 확인필요
