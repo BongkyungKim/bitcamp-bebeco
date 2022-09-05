@@ -910,3 +910,152 @@ select 컬럼명 as 별명, 식 as 별명
 - 
 
 ### 포함 관계 vs 배타적 관계
+
+# 20220905
+
+### DBMS Native API 등장
+
+- `Native API` : DBMS client 역할, App이 사용
+
+- `DBMS API` : App에서 DBMS Server에게 SQL을 보낼 때 사용하는 메서드(함수)
+
+- 이미지 삽입
+
+### DBMS Native API
+
+- 이미지 삽입
+
+### DBMS Native API : DBMS Vendor 에서 제공
+
+### ODBC API : DBMS API의 표준 규격
+
+- `ODBC` : Open Database Connectivity
+
+  ODBC API 표준 규격에 따라 API를 만들었다.
+
+- 이미지 삽입
+
+- API 규격이 같기 때문에 메서드 호출 코드도 동일하다.
+
+  = DBMS마다 변경할 필요가 없다.
+
+### Java에서 DBMS와 연결할 자바 전용 API가 필요!
+
+- `Java DataBase Connectivity`(JDBC) :
+
+  c/c++로 작성된 ODBC API를 호출할 Java API가 필요해서 Java DataBase Connectivity API 등장(JDBC)
+
+### JDBC API : 자바에서 DBMS와 연결할 때 사용하는 객체의 호출 규격을 정의한 것
+
+1. Type 1 드라이버
+
+- `JDBC Driver` : 규격에 따라 클래스와 메서드를 구현
+
+-  ODBC API를 호출하는 JDBC Driver를 `"Type 1 Driver"`로 부름
+
+    = ODBC - JDBC Bridge 드라이버
+
+- JRE에 기본으로 포함되어 있다
+
+- ODBC Driver 호출
+
+- Local에 ODBC Driver설치
+
+- 이미지 삽입
+
+<br/>
+
+2. Type 2 드라이버 => DBMS Native Call 드라이버
+
+- 규격에 따라 제작
+
+- DBMS Native API 호출
+
+- Local에 DBMS 전용 API 설치 필요
+
+- DBMS Vender로 부터 다운로드 받아야 한다.
+
+
+> Type1이든 Type2이든 둘 다 JDBC API 규격에 따라 작성되었기 때문에 사용법이 같다.<br/>
+=> Java App을 변경할 필요가 없다.
+
+<br/>
+
+3. Type 3 드라이버 => 네트워크 드라이버
+
+- DBMS를 바꾸더라도 Local쪽은 변경할 필요가 없다.
+
+  => Remote1에서 변경하기 때문이다.
+
+- Local에는 DBMS와 관련된 파일을 설치할 필요가 없다.
+
+  => DBMS와 관련된 파일을 Remote1에 설치하기 때문이다.
+
+- `Middleware` : 중간에서 제어하는 S/W
+
+<br/>
+
+4. Type 4 드라이버 => DBMS protocol Driver
+
+- Local에 ODBC API/Native API를 설치해야 하는 문제를 해결 한 것
+
+  => DBMS서버와 직접 통신
+
+- DBMS Vender에 다운로드 해야 한다.
+
+  => DBMS 변경되면 Driver도 변경해야 한다.
+
+- Local에 DBMS관련 ODBC API나 Native API를 설치할 필요가 없다.
+
+- JDBC Driver만 설치한다.
+
+  => Pure Java
+
+<br/>
+
+### JDBC programming
+
+1. JDBC Driver 다운로드
+2. 프로젝트 classpath에 추가
+3. JDBC API 규격에 따라 call
+
+### JDBC programming 절차
+
+1. java.sql.Driver 구현체 로딩
+
+  `구현체 로딩` <= JDBC Driver에 대한 정보를 갖고 있다.
+
+2. java.sql.DriverManager에 Driver 구현체 등록
+
+3. DriverManager를 통해 java.sql.Connection 객체 얻기
+
+  `java.sql.Connection` <= DBMS와의 연결정보 갖고 있다.
+
+4. Connection을 통해 java.sql.Statement/PreparedStatement 객체를 준비시킨다.
+
+  `java.sql.Statement/PreparedStatement` <= SQL을 서버에 보내고 응답을 받는 일을 한다.
+
+5. Statement/PreparedStatement를 통해 java.sql.ResultSet을 얻는다.  
+
+  `java.sql.ResultSet` <= DBMS의 select 결과를 한 개씩 가져오는 일을 한다.
+
+### JDBC API의 기본 객체  
+
+### JDBC API의 기본 객체 - 메서드 호출
+
+### 클래스 로딩
+
+1. new 클래스() <- 인스턴스를 생성 할 때
+
+2. 클래스.스태틱필드 = 값; <- 스태틱 필드를 사용할 때 
+
+3. 클래스.스태틱메서드() <- 스태틱 메서드를 호출할 때
+
+4. Class.forName("패키지.클래스"); <- 명시적으로 로딩
+
+  `패키저.클랙스` : fully-qualified class name (FQName = QName)
+
+  ### 진도
+
+- java-lang.jdbc.ex01.~Exam220
+
