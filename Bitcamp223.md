@@ -1059,3 +1059,25 @@ select 컬럼명 as 별명, 식 as 별명
 
 - java-lang.jdbc.ex01.~Exam220
 
+# 20220906
+
+### JDBC API를 사용해 데이터를 처리 -> 캡슐화 -> DAO 클래스로 정의
+
+### autocommit의 문제점
+
+### 수동 commit
+
+### 커넥션 객체를 공유하지 않는 경우
+
+- 
+
+### 커넥션 객체를 공유하는 경우
+
+### 커넥션 재사용
+
+### 진도 
+
+- java-lang.jdbc.ex01
+- java-lang.jdbc.ex02
+- java-lang.jdbc.ex03
+- java-lang.jdbc.ex04
