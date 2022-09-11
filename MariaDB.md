@@ -1,3 +1,4 @@
+## Exam01
 
 ### 데이터베이스
 
@@ -322,7 +323,180 @@ from table_constraints;
 - 테이블의 키 컬럼 정보 조회
 
 ```sql
-select table_name, column_name
+select table_name, column_name, constraint_name
+from key_column_usage;
+```
+
+- 테이블과 컬럼의 키 제약 조건 조회
+
+```sql
+select
+  t2.table_name,
+  t2.column_name,
+  t2.constraint_name,
+  t1.constraint_type
+from table_constraints t1
+  inner join key_column_usage t2 on t2.constraint_name = t1.constraint_name;
+```    
+
+<br/>
+
+## Exam02
+
+### DML(Data Manipulation Language)
+
+- 데이터 등록(insert), 변경(update), 삭제(delete)를 다루는 SQL 문법
+
+### autocommit
+
+- mysql은 autocommit의 기본 값이 true이다. 따라서 명령창에서 SQL을 실행하면 바로 실제 테이블에 적용된다.
+
+- 수동으로 처리하고 싶다면 autocommit을 false로 설정해야 한다.
+
+```sql
+set autocommit = false;
+```
+- 위 SQL문을 추가하면 insert/update/delete을 수행한 후 승인을 해야만 실제 테이블에 적용된다.
+
+- 마지막 commit 상태로 되돌리고 싶다면 `rollback;`을 하면 된다.
+
+<br/>
+
+## Exam03
+
+### DQL(Data Query Language)
+
+- 데이터를 조회할 때 사용하는 문법
+
+- select
+
+  테이블의 데이터를 조회할 때 사용하는 명령이다.
+
+```sql
+select * from 테이블; // 모든 컬럼 값 조회하기.
+
+select 컬럼명, 컬럼명 from 테이블; // 특정 컬럼의 값만 조회할 때 => 프로젝션(projection)이라 부른다.
+```
+- select하는 컬럼에 별명 붙이기
+
+  별명을 붙이지 않으면 원래의 컬럼명이 조회 결과의 컬럼이름으로 사용된다.
+
+```sql
+// 컬럼에 별명 붙이기
+// as를 생략해도 된다
+select 컬럼명 [as] 별명 ...
+```
+
+### 조회할 때 조건 지정하기
+
+- where 절과 연산자를 이용하여 조회 조건을 지정할 수 있다.
+
+- 이렇게 조건을 지정하여 결과를 선택하는 것을 `셀렉션(selection)` 이라 한다.
+
+```sql
+select ...
+from ...
+where 조건...
+```
+
+### 연산자
+
+- OR
+
+  두 조건 중에 참인 것이 있으면 조회 결과에 포함시킨다.
+
+- AND
+
+  두 조건 모두 참일 때만 조회 결과에 포함시킨다.
+
+- NOT
+
+  조건에 일치하지 않을 때만 결과에 포함시킨다.
+
+- 실행순서
+
+  from => where => select
+
+  where 절을 통해 결과 데이터를 먼저 선택(selection)한 다음 결과 데이터에서 가져올 컬럼을 선택(projection)한다.
+
+### 사칙연산
+
+- +, -, *, /, % 연산자를 사용할 수 있다.
+
+### 비교연산
+
+- =, !=, >, >=, <, <=, <>
+
+### between 값1 and 값2
+
+- 두 값 사이(두 값도 포함)에 있는지 검사한다.
+
+### like
+
+- 문자열을 비교할 때 사용한다.
+
+- ex)
+
+1. `like 'java%`
+
+  % : 0개 이상의 문자
+
+  java로 시작하는 모든 문자 조회하기
+
+2. `like %java%`
+
+  java를 포함하는 모든 문자 조회하기
+
+  이 경우 조회 속도가 느리다.
+
+3. `like %101`
+
+  101로 끝나는 모든 문자 조회하기
+
+4. `like s0_`
+
+  _ : 딱 1자를 의미한다.
+
+  첫번째 문자가 s이고 두번째 문자가 0인 문자 중에서 딱 세자를 가진 문자를 모두 조회하기
+
+### 날짜 다루기
+
+- 날짜 함수와 문자열 함수를 사용하여 날짜 값을 다루는 방법
+
+- 날짜를 다루는 연산자와 함수
+
+1. 현재 날짜 및 시간 알아내기
+
+`select now();`
+
+2. 현재 날짜 알아내기
+
+`select curdate();`
+
+3. 현재 시간 알아내기
+
+`select curtime;`
+
+4. 주어진 날짜, 시간에서 날짜만 뽑거나 시간만 뽑기
+
+```sql
+select regdt, date(regdt), time(regdt)
+from 테이블;
+```
+
+5. 특정 날짜에 시, 분, 초, 일, 월, 년을 추가하거나 빼기
+
+```sql
+date_add(날짜데이터, interval 값 단위);
+date_sub(날짜데이터, interval 값 단위);
+```
+
+6. 두 날짜 사이의 간격을 알아내기
+
+`datediff(날짜1, 날짜2);`
+
+
+
 
 
 
