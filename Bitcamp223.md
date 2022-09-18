@@ -1164,3 +1164,84 @@ select 컬럼명 as 별명, 식 as 별명
 
 - 시연
 
+<br/>
+
+# 20220913
+
+### app-client/server
+
+```java
+try (Socket socket = new Socket("localhost", 8888);
+        DataInputStream in = new DataInputStream(socket.getInputStream());
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
+
+	  // 데코레이터
+      //      Scanner in = new Scanner(socket.getInputStream());
+      //      PrintStream out = new PrintStream(socket.getOutputStream())) 
+```
+<br/>
+
+# 20220914
+
+### Application Server Architecture
+
+- Thread Safe : 여러 스레드가 동시에 해당 코드를 실행하더라도 문제가 없는 경우.
+
+# 20220915
+
+### 웹 애플리케이션 서버 구조
+
+- 이미지 첨부
+
+### MiniWebServer 구조
+
+- 이미지 첨부
+
+### MiniWebServer 에서 요청처리 하기
+
+- 이미지 첨부
+
+<br/>
+
+# 20220916
+
+### URL 인코딩(percent encoding)
+
+- URL을 표현할 때 다음에 해당하는 문자로 %00 형태로 변환해야 한다.
+
+- URL에 QueryString으로 데이터를 보낸다면 다음의 문자는 %00 형태로 변환해야 한다.
+
+1. 예약 문자(reserved characters)
+
+  URL에서 특별한 의미로 사용되는 문자
+
+  ! * ' ( ) ; : @ & = + $ , / ? # [ ]
+
+  => 예약 문자를 그냥 일반적인 데이터로 보내고 싶다면 %00 형태로 인코딩 해야 한다.
+
+2. 비예약 문자(unreserved characters)
+
+  인코딩이 필요없다. URL에 그대로 사용가능.
+
+  대문자(A-Z), 소문자(a-z), 숫자(0-9), - _ . ~
+
+3. 그 외 문자
+
+  %00 형태로 인코딩 해야 한다(웹브라우저와 서버가 자동으로 처리)
+
+  => 개발자가 신경쓸 필요가 없다.
+
+  => 그러나 직접 웹서버를 만든다면 URL 디코딩을 직접 처리해야 한다.
+
+```
+  값 --[인코딩(변환)]--> 7bit화 ---[ASCII코드(7bit)---> 7bit화 --[다코딩]--> 
+```
+
+### Command Design Pattern
+
+- 명령어 처리를 한 메서드가 담당할 때 차라리 그 메서드를 별도 객체로 분리시키면 유지보수에 좋다
+
+- 메서드를 객체화
+
+- 이미지 첨부
+
