@@ -181,3 +181,64 @@ values(16, 16, 16, 16);
 
 insert into test4
 values(3, 3, 3, 3);
+
+
+
+delete from party where p_no = 2;
+delete from party where p_no = 3;
+delete from party where p_no = 4;
+delete from party where p_no = 5;
+delete from party where p_no = 6;
+delete from party where p_no = 7;
+delete from party where p_no = 8;
+delete from party where p_no = 9;
+delete from party where p_no = 10;
+delete from party where p_no = 2;
+
+
+
+
+select * from test1 t1
+join test2 t2 on t1.no = t2.no
+join test3 t3 on t2.no = t3.no;
+
+select * from member m
+join feed f on m.mno = f.mno
+join feed_like l on f.mno = l.mno;
+
+select * from member m
+join ticket t on m.mno = t.mno;
+
+
+select * from member m
+join ticket t on m.mno = t.mno
+join review r on t.t_no = r.t_no;
+
+
+select * from member m
+                  join ticket t on m.mno = t.mno
+                  join review r on t.t_no = r.t_no
+                  join rv_img ri on r.t_no = ri.t_no;
+
+
+------------- 메모 --------------
+
+// 0. csv파일 insert
+load data local infile '/Users/bebeco/bitcamp-project/DB/파일명.csv' into table [DB명].[테이블명] fields terminated by ',';
+load data local infile '/Users/bebeco/bitcamp-project/DB/sample2.csv' into table got.party fields terminated by ',';
+
+// 1. member
+insert into member (mno, id, pwd, grade, name, nick, in_date, postnum, mainaddr, out_state) 
+values (1, 'user1@test.com', '1111', 0, '비트캠프1', 'bitbit', '2022-10-05', '30100', '세종시', 0);
+
+insert into member (mno, id, pwd, grade, name, nick, in_date, postnum, mainaddr, out_state) 
+values (2, 'user2@test.com', '1111', 0, '비트캠프2', 'bitbit', '2022-10-05', '30100', '세종시', 0);
+
+insert into member (mno, id, pwd, grade, name, nick, in_date, postnum, mainaddr, out_state) 
+values (3, 'user3@test.com', '1111', 0, '비트캠프3', 'bitbit', '2022-10-05', '30100', '세종시', 0);
+
+insert into member (mno, id, pwd, grade, name, nick, in_date, postnum, mainaddr, out_state) 
+values (4, 'user4@test.com', '1111', 0, '비트캠프4', 'bitbit', '2022-10-05', '30100', '세종시', 0);
+
+insert into member (mno, id, pwd, grade, name, nick, in_date, postnum, mainaddr, out_state) 
+values (5, 'user5@test.com', '1111', 0, '비트캠프5', 'bitbit', '2022-10-05', '30100', '세종시', 0);

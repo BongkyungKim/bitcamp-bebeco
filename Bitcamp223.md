@@ -1245,3 +1245,33 @@ try (Socket socket = new Socket("localhost", 8888);
 
 - 이미지 첨부
 
+<br/>
+
+# 20220919
+
+### 객체 생성 방법
+
+```java
+String s = new String();
+
+String s2 = new String("Hello");
+
+// CLass<?> : 클래스 정보
+Class<?> classInfo = Class.forName("java.lang.String");
+
+// newInstance() : 옛날 방식 deprecated
+String x1 = classInfo.newInstance();
+```
+
+### 056. 웹서버와 애플리케이션 서버 기능 분리
+
+### 057. Servlet/JSP 기술을 이용하여 웹 애플리케이션 개발하기
+
+### 톰캣 서버 다운로드
+
+### eclipseIDE와 Tomcat서버
+
+
+
+
+
